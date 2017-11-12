@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+python manage.py collectstatic --noinput -i docs -i components
+# python manage.py migrate --noinput
+
+# rm -rf node_modules
+# rm -rf static-compiled/docs
+# rm -rf static-compiled/components
