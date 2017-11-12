@@ -99,3 +99,10 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Added by djzen
+.env
+db.sqlite3
+static-compiled
+# End djzen
+
