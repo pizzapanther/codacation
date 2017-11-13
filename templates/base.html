@@ -1,0 +1,40 @@
+<!DOCTYPE html>{% load static %}
+<html>
+  <head lang="en-us">
+    <title>{% block title %}{% endblock %} | Codacation</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="shortcut icon" href="{% static "favicon.ico" %}">
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <link rel="stylesheet" href="{% static "vue-material.css" %}">
+  </head>
+  <body>
+    <div id="app">
+      <md-toolbar class="md-dense">
+        <md-button class="md-icon-button">
+          <md-icon>menu</md-icon>
+        </md-button>
+      
+        <h2 class="md-title" style="flex: 1">Codacation</h2>
+      
+        <md-button class="md-icon-button">
+          <md-icon>favorite</md-icon>
+        </md-button>
+      </md-toolbar>
+    </div>
+    {% if DEV %}
+    <script src="{% static "vue.js" %}"></script>
+    {% else %}
+    <script src="{% static "vue.min.js" %}"></script>
+    {% endif %}
+    
+    <script src="{% static "vue-material.js" %}"></script>
+    
+    <script src="{% static "main.js" %}"></script>
+  </body>
+</html>

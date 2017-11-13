@@ -1,0 +1,22 @@
+{
+  "name": "codacation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "8.9.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pizzapanther/codacation.git"
+  },
+  "author": "Paul Bailey <paul@codacation.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pizzapanther/codacation/issues"
+  },
+  "homepage": "https://github.com/pizzapanther/codacation#readme"
+}

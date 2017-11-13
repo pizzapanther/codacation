@@ -17,6 +17,11 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from djzen.urls import zen_url
 
+import codacation.views
+
 urlpatterns = [
-    zen_url('admin/', admin.site.urls),
+  zen_url('admin/', admin.site.urls),
+  
+  zen_url('favicon.ico', codacation.views.favicon),
+  zen_url('', codacation.views.home),
 ]
