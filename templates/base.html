@@ -1,7 +1,7 @@
 <!DOCTYPE html>{% load static %}
 <html>
   <head lang="en-us">
-    <title>{% block title %}{% endblock %} | Codacation</title>
+    <title>Codacation</title>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,16 +12,15 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
     
     <link rel="stylesheet" href="{% static "vue-material.css" %}">
+    <link rel="stylesheet" href="{% static "dist/coda.css" %}">
   </head>
   <body>
     <div id="app">
-      <md-toolbar class="md-dense">
-        <md-button class="md-icon-button">
-          <md-icon>menu</md-icon>
-        </md-button>
-      
-        <h2 class="md-title" style="flex: 1">Codacation</h2>
-      
+      <md-toolbar class="md-dense navbar">
+        <a href="/">
+          <img src="{% static "img/code-break.png" %}" alt="">
+          <h2 class="md-title" style="flex: 1">Codacation</h2>
+        </a>
         <md-button class="md-icon-button">
           <md-icon>favorite</md-icon>
         </md-button>
@@ -29,12 +28,18 @@
     </div>
     {% if DEV %}
     <script src="{% static "vue.js" %}"></script>
+    <script src="{% static "vue-router.js" %}"></script>
     {% else %}
     <script src="{% static "vue.min.js" %}"></script>
+    <script src="{% static "vue-router.min.js" %}"></script>
     {% endif %}
     
     <script src="{% static "vue-material.js" %}"></script>
     
     <script src="{% static "main.js" %}"></script>
+    
+    {% for tpl in templates %}
+    <script type="text/x-template" id="tpl-{{ tpl.path }}">{{ tpl.content | safe }}</script>
+    {% endfor %}
   </body>
 </html>
