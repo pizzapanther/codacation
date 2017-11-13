@@ -23,5 +23,5 @@ urlpatterns = [
   zen_url('admin/', admin.site.urls),
   
   zen_url('favicon.ico', codacation.views.favicon),
-  zen_url('', codacation.views.home),
+  zen_url('.*', codacation.views.home),
 ]

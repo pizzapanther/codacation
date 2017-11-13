@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/pizzapanther/codacation/issues"
   },
-  "homepage": "https://github.com/pizzapanther/codacation#readme"
+  "homepage": "https://github.com/pizzapanther/codacation#readme",
+  "dependencies": {
+    "vue": "^2.5.3",
+    "vue-material": "^0.8.1"
+  }
 }
