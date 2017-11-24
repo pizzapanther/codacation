@@ -1,9 +1,15 @@
 dj-database-url==0.4.2
 django==1.11.7
 django-dotenv==1.4.1
+django-filter==1.1.0
 django-uwsgi==0.2.1
+djangorestframework==3.7.3
 djzen==17.7.1
+graphene==2.0.1
+graphene-django==2.0.0
 pip-save==0.2.0
 psycopg2==2.7.3.2
+PyJWT==1.5.3
+social-auth-app-django==2.0.0
 uwsgi==2.0.15
 whitenoise==3.3.1

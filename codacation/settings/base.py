@@ -46,6 +46,9 @@ INSTALLED_APPS = [
   'djzen',
   'django_uwsgi',
   
+  'social_django',
+  'graphene_django',
+  
   'account',
 ]
 
@@ -75,6 +78,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
+                # Social Auth
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -89,26 +96,6 @@ WSGI_APPLICATION = 'codacation.wsgi.application'
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(
   default='postgres://postgres:postgres@localhost:5432/codacation')
-
-AUTH_USER_MODEL = 'account.User'
-
-# Password validation
-# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
-
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
 
 
 # Internationalization
@@ -144,4 +131,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Uncomment if using Heroku
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
+
+GRAPHENE = {
+  'SCHEMA': 'codacation.schema.schema'
+}
+
+from codacation.settings.auth import *
 

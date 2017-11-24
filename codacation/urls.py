@@ -22,6 +22,9 @@ import codacation.views
 urlpatterns = [
   zen_url('admin/', admin.site.urls),
   
+  zen_url('auth/', include('social_django.urls', namespace='auth')),
+  
+  zen_url('data-graph', codacation.views.data_graph),
   zen_url('favicon.ico', codacation.views.favicon),
   zen_url('.*', codacation.views.frontend),
 ]

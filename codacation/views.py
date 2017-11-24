@@ -3,6 +3,9 @@ import os
 from django import http
 from django.conf import settings
 from django.template.response import TemplateResponse
+from django.views.decorators.csrf import csrf_exempt
+
+from graphene_django.views import GraphQLView
 
 from codacation.release import RELEASE
 
@@ -39,3 +42,4 @@ def favicon (request):
 def frontend (request):
   return TemplateResponse(request, 'base.html', site_context({}))
   
+data_graph = csrf_exempt(GraphQLView.as_view(graphiql=True))

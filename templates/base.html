@@ -1,7 +1,7 @@
 <!DOCTYPE html>{% load static %}
 <html>
   <head lang="en-us">
-    <title>Codacation</title>
+    <title>Codacation ⋅ Coding Education via Git Workflows</title>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +25,14 @@
           <md-icon>favorite</md-icon>
         </md-button>
       </md-toolbar>
+      <div id="app-router">
+        <router-view></router-view>
+      </div>
     </div>
+    {% for tpl in templates %}
+    <script type="text/x-template" id="tpl-{{ tpl.path }}">{{ tpl.content | safe }}</script>
+    {% endfor %}
+    
     {% if DEV %}
     <script src="{% static "vue.js" %}"></script>
     <script src="{% static "vue-router.js" %}"></script>
@@ -36,10 +43,6 @@
     
     <script src="{% static "vue-material.js" %}"></script>
     
-    <script src="{% static "main.js" %}"></script>
-    
-    {% for tpl in templates %}
-    <script type="text/x-template" id="tpl-{{ tpl.path }}">{{ tpl.content | safe }}</script>
-    {% endfor %}
+    <script src="{% static "dist/main.js" %}"></script>
   </body>
 </html>

@@ -1,3 +1,10 @@
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import VueMaterial from 'vue-material';
+
+import router from './routes';
+
+Vue.use(VueRouter);
 Vue.use(VueMaterial);
 
 Vue.material.registerTheme('default', {
@@ -8,16 +15,18 @@ Vue.material.registerTheme('default', {
 });
 
 var app = new Vue({
-  el: '#app',
+  router: router,
   data() {
     return {
       
     };
   },
   created: function () {
-    
+    console.log('created');
   },
   methods: {
     
   }
 });
+
+app.$mount('#app');
