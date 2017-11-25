@@ -7,7 +7,8 @@ class Klass (models.Model):
   created = models.DateTimeField(auto_now_add=True)
   modified = models.DateTimeField(auto_now=True)
   
-  admins = models.ManyToManyField(settings.AUTH_USER_MODEL)
+  admins = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='admin_classes')
+  students = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='student_classes')
   
   invite_code = models.CharField(max_length=255, unique=True)
   
