@@ -1,9 +1,11 @@
 import graphene
 
 import account.schema
+import classroom.schema
 
 class Query(
   account.schema.Query,
+  classroom.schema.Query,
   graphene.ObjectType):
   pass
 

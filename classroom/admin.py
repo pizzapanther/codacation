@@ -8,7 +8,7 @@ class KlassAdmin(admin.ModelAdmin):
   list_filter = ('created',)
   search_fields = ('name', 'admins__email')
   
-  raw_id_fields = ('admins',)
+  raw_id_fields = ('admins', 'students')
   
   def Admins (self, obj):
     return ', '.join(obj.admins.all().values_list('email', flat=True))

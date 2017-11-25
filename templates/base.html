@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
     
-    <link rel="stylesheet" href="{% static "vue-material.css" %}">
     <link rel="stylesheet" href="{% static "dist/coda.css" %}">
   </head>
   <body>
@@ -26,6 +25,7 @@
           <md-icon>favorite</md-icon>
         </md-button>
       </md-toolbar>
+      <md-progress v-if="loading" class="md-accent main" md-indeterminate></md-progress>
       <div id="app-router">
         <router-view></router-view>
       </div>
@@ -42,14 +42,16 @@
         BASE_URL: '{{ request.scheme }}://{{ request.get_host }}'
       }
     </script>
-    {% if DEV %}
+    {% if debug %}
     <script src="{% static "axios.js" %}"></script>
     <script src="{% static "vue.js" %}"></script>
     <script src="{% static "vue-router.js" %}"></script>
+    <script src="{% static "vuex.js" %}"></script>
     {% else %}
     <script src="{% static "axios.min.js" %}"></script>
     <script src="{% static "vue.min.js" %}"></script>
     <script src="{% static "vue-router.min.js" %}"></script>
+    <script src="{% static "vuex.min.js" %}"></script>
     {% endif %}
     
     <script src="{% static "vue-material.js" %}"></script>

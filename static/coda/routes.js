@@ -1,14 +1,20 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import store from './services/store';
 import Home from './home';
 import JWTLogin from './account/jwt_login';
+
+import Classes from './classroom/classes';
+import Klass from './classroom/klass';
 
 const NotFound = {template: '#tpl-404'};
 
 export const routes = [
   {path: '/login/next/*', name: 'jwt-login', component: JWTLogin},
-  {path: '/', component: Home},
+  {path: '/classes/:id', name: 'class', component: Klass, props: true},
+  {path: '/classes', name: 'classes', component: Classes},
+  {path: '/', name: 'home', component: Home},
   {path: '*', component: NotFound}
 ];
 
@@ -31,13 +37,7 @@ router.set_title = (to) => {
     }
   }
   
-  if (title) {
-    title += ' \u22C5 Codacation';
-  } else {
-    title = 'Codacation \u22C5 Coding Education via Git Workflows';
-  }
-  
-  document.title = title;
+  store.commit('set_title', title);
 };
 
 router.afterEach((to, from) => {

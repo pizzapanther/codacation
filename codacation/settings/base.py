@@ -121,6 +121,7 @@ STATICFILES_DIRS = [
   os.path.join(BASE_DIR, 'node_modules', 'vue', 'dist'),
   os.path.join(BASE_DIR, 'node_modules', 'vue-router', 'dist'),
   os.path.join(BASE_DIR, 'node_modules', 'vue-material', 'dist'),
+  os.path.join(BASE_DIR, 'node_modules', 'vuex', 'dist'),
 ]
 
 STATIC_URL = '/static/'
