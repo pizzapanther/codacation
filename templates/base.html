@@ -1,6 +1,7 @@
 <!DOCTYPE html>{% load static %}
 <html>
   <head lang="en-us">
+    <!--Release: v{{ release }}-->
     <title>Codacation ⋅ Coding Education via Git Workflows</title>
     
     <meta charset="utf-8">
@@ -29,6 +30,9 @@
         <router-view></router-view>
       </div>
     </div>
+    <footer>
+      Release: v{{ release }}
+    </footer>
     {% for tpl in templates %}
     <script type="text/x-template" id="tpl-{{ tpl.path }}">{{ tpl.content | safe }}</script>
     {% endfor %}
