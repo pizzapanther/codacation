@@ -50,6 +50,7 @@ INSTALLED_APPS = [
   'graphene_django',
   
   'account',
+  'classroom',
 ]
 
 MIDDLEWARE = [
