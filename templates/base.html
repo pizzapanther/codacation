@@ -33,10 +33,17 @@
     <script type="text/x-template" id="tpl-{{ tpl.path }}">{{ tpl.content | safe }}</script>
     {% endfor %}
     
+    <script>
+      var SETTINGS = {
+        BASE_URL: '{{ request.scheme }}://{{ request.get_host }}'
+      }
+    </script>
     {% if DEV %}
+    <script src="{% static "axios.js" %}"></script>
     <script src="{% static "vue.js" %}"></script>
     <script src="{% static "vue-router.js" %}"></script>
     {% else %}
+    <script src="{% static "axios.min.js" %}"></script>
     <script src="{% static "vue.min.js" %}"></script>
     <script src="{% static "vue-router.min.js" %}"></script>
     {% endif %}

@@ -1,9 +1,11 @@
 import Vue from 'vue';
 
+import DataGraph from '../services/graph_api';
+import local_store from '../services/storage';
+
 var JWTLogin = Vue.component('jwt-login', {
   template: '#tpl-account-jwt_login',
   data() {
-    console.log('JWT');
     return {
       title: "Generating login token"
     };
@@ -14,7 +16,21 @@ var JWTLogin = Vue.component('jwt-login', {
   },
   methods: {
     init() {
-      console.log(this.$route.params[0]);
+      var next_url = '/' + this.$route.params[0];
+      var m = {
+        node: 'getJwt',
+        input: {extra: 'narf'},
+        attributes: ['jwt']
+      };
+      
+      DataGraph().mutate(m).submit()
+        .then((response) => {
+          local_store.setJwt(response.data.getJwt.data.jwt);
+          this.$router.push(next_url);
+        })
+        .catch(function () {
+          alert("Error logging in, go back and try again.");
+        });
     }
   }
 });

@@ -117,6 +117,7 @@ USE_TZ = True
 
 STATICFILES_DIRS = [
   os.path.join(BASE_DIR, 'static'),
+  os.path.join(BASE_DIR, 'node_modules', 'axios', 'dist'),
   os.path.join(BASE_DIR, 'node_modules', 'vue', 'dist'),
   os.path.join(BASE_DIR, 'node_modules', 'vue-router', 'dist'),
   os.path.join(BASE_DIR, 'node_modules', 'vue-material', 'dist'),

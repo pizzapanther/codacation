@@ -22,7 +22,7 @@ var app = new Vue({
     };
   },
   created: function () {
-    console.log('created');
+    console.log('created App');
   },
   methods: {
     
