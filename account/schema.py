@@ -50,9 +50,10 @@ class AccountNode (DjangoObjectType):
     only_fields = ('email', 'first_name', 'last_name', 'name')
     
 class Query:
-  accounts = DjangoFilterConnectionField(AccountNode)
+  # accounts = DjangoFilterConnectionField(AccountNode)
+  my_info = DjangoFilterConnectionField(AccountNode)
   
-  def resolve_my_posts(self, info):
+  def resolve_my_info(self, info):
     if info.context.user.is_authenticated():
       return User.objects.filter(id=info.context.user.id)
       

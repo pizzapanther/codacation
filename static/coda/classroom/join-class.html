@@ -1,10 +1,32 @@
 <div class="join-class">
-  <md-card class="content">
-    <md-card-header>
-      <h1>Join Class</h1>
-    </md-card-header>
-    <md-card-content>
-      
-    </md-card-content>
-  </md-card>
+  <form @submit.stop.prevent="submit" v-if="form_data">
+    <md-card class="content">
+      <md-card-header>
+        <h1>Join Class</h1>
+      </md-card-header>
+      <md-card-content>
+        <div class="max-form">
+          <md-input-container>
+            <label>First Name</label>
+            <md-input v-model="form_data.firstName" required></md-input>
+          </md-input-container>
+          <md-input-container>
+            <label>Last Name</label>
+            <md-input v-model="form_data.lastName" required></md-input>
+          </md-input-container>
+          <md-input-container>
+            <label>E-Mail</label>
+            <md-input v-model="form_data.email" type="email" required></md-input>
+          </md-input-container>
+          <md-input-container>
+            <label>Invite Code</label>
+            <md-input v-model="form_data.inviteCode" required></md-input>
+          </md-input-container>
+        </div>
+      </md-card-content>
+      <md-card-actions>
+        <md-button type="submit" class="md-primary md-raised">Join</md-button>
+      </md-card-actions>
+    </md-card>
+  </form>
 </div>
