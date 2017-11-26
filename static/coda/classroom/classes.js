@@ -1,9 +1,11 @@
 import Vue from 'vue';
 
 import DataGraph from '../services/graph_api';
+import AuthRequired from '../mixins/auth-required';
 
 var Classes = Vue.component('my-classes', {
   template: '#tpl-classroom-classes',
+  mixins: [AuthRequired],
   data() {
     console.log('classes');
     return {

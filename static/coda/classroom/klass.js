@@ -2,11 +2,13 @@ import Vue from 'vue';
 
 import DataGraph from '../services/graph_api';
 import store from '../services/store';
+import AuthRequired from '../mixins/auth-required';
 
 import ClassPeople from './class-people';
 
 var Klass = Vue.component('my-class', {
   template: '#tpl-classroom-klass',
+  mixins: [AuthRequired],
   props: ['id'],
   data() {
     return {
