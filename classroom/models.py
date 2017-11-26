@@ -7,8 +7,8 @@ class Klass (models.Model):
   created = models.DateTimeField(auto_now_add=True)
   modified = models.DateTimeField(auto_now=True)
   
-  admins = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='admin_classes')
-  students = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='student_classes')
+  admins = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='admin_classes', blank=True)
+  students = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='student_classes', blank=True)
   
   invite_code = models.CharField(max_length=255, unique=True)
   
@@ -19,3 +19,11 @@ class Klass (models.Model):
     
   def __str__ (self):
     return self.name
+    
+  def is_admin (self, user):
+    if user.is_authenticated():
+      if self.admins.filter(id=user.id).count() > 0:
+        return True
+        
+    return False
+    

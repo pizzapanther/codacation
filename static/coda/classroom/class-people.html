@@ -1,0 +1,11 @@
+<div class="class-people">
+  <md-list>
+    <md-list-item v-for="p in people" :key="p.id">
+      <h3>{{ p.name }}</h3>
+      <div>
+        <a :href="`mailto:${p.email}`">{{ p.email }}</a>
+      </div>
+      <md-divider></md-divider>
+    </md-list-item>
+  </md-list>
+</div>

@@ -7,7 +7,6 @@ const store = new Vuex.Store({
   },
   mutations: {
     set_title (state, title) {
-      console.log(title);
       if (title) {
         title += ' \u22C5 Codacation';
       } else {

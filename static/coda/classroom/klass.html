@@ -2,20 +2,26 @@
   <md-card class="content" v-if="klass">
     <md-card-header>
       <h1>{{ klass.name }}</h1>
-      <h3>Invite Code: {{ klass.inviteCode }}</h3>
+      <h3 v-if="klass.isAdmin">Invite Code: {{ klass.inviteCode }}</h3>
+      <p>
+        Join at: <a :href="join_url" target="_blank">{{ join_url }}</a>
+      </p>
     </md-card-header>
     <md-card-content>
-      <md-tabs>
+      <md-tabs v-if="klass.isAdmin">
         <md-tab id="assignments" md-label="Assignments">
           assign
         </md-tab>
         <md-tab id="students" md-label="Students">
-          students
+          <class-people :people="students"></class-people>
         </md-tab>
         <md-tab id="admins" md-label="Admins">
-          admins
+          <class-people :people="admins"></class-people>
         </md-tab>
       </md-tabs>
+      <div v-if="!klass.isAdmin">
+        assignments
+      </div>
     </md-card-content>
   </md-card>
 </div>

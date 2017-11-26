@@ -41,11 +41,13 @@ class GetJWT (relay.ClientIDMutation):
     return cls(errors=['Not logged in'])
     
 class AccountNode (DjangoObjectType):
+  name = graphene.String(source='name')
+  
   class Meta:
     model = User
     interfaces = (relay.Node, )
     filter_fields = []
-    only_fields = ('email', 'first_name', 'last_name')
+    only_fields = ('email', 'first_name', 'last_name', 'name')
     
 class Query:
   accounts = DjangoFilterConnectionField(AccountNode)
