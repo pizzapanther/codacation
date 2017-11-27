@@ -8,6 +8,10 @@ export function data_graph () {
   return DataGraph('/data-graph', {http: http})();
 }
 
+export function rest_api () {
+  return axios_instance();
+}
+
 export function axios_instance () {
   var data = local_store.check_jwt();
   var jwt = data.jwt || 'none';

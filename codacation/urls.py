@@ -24,6 +24,8 @@ urlpatterns = [
   
   zen_url('auth/', include('social_django.urls', namespace='auth')),
   
+  zen_url('gh/', include('gh.urls', namespace='gh')),
+  
   zen_url('data-graph', codacation.views.data_graph),
   zen_url('favicon.ico', codacation.views.favicon),
   zen_url('.*', codacation.views.frontend),

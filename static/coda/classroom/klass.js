@@ -5,6 +5,7 @@ import store from '../services/store';
 import AuthRequired from '../mixins/auth-required';
 
 import ClassPeople from './class-people';
+import AddAssignmentDialog from './dialogs/add-assignment';
 
 var Klass = Vue.component('my-class', {
   template: '#tpl-classroom-klass',
@@ -16,7 +17,8 @@ var Klass = Vue.component('my-class', {
       join_url: SETTINGS.BASE_URL + '/classes/join',
       klass: null,
       students: [],
-      admins: []
+      admins: [],
+      dialog: null
     };
   },
   watch: {'$route': 'init'},
@@ -55,6 +57,16 @@ var Klass = Vue.component('my-class', {
           console.error(e);
           alert("Error fetching class.");
         });
+    },
+    add_assignment() {
+      this.dialog = AddAssignmentDialog(this);
+    },
+    close_assignment(refresh) {
+      if (refresh) {
+        this.init();
+      }
+      
+      this.dialog = null;
     }
   }
 });

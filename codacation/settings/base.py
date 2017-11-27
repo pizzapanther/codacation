@@ -48,6 +48,7 @@ INSTALLED_APPS = [
   
   'social_django',
   'graphene_django',
+  'rest_framework',
   
   'account',
   'classroom',
