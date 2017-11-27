@@ -27,3 +27,30 @@ class Klass (models.Model):
         
     return False
     
+class Assignment (models.Model):
+  name = models.CharField(max_length=75)
+  short_description = models.CharField(max_length=255, blank=True, null=True)
+  
+  repo_url = models.CharField(max_length=255)
+  
+  klass = models.ForeignKey(Klass)
+  
+  created = models.DateTimeField(auto_now_add=True)
+  modified = models.DateTimeField(auto_now=True)
+  
+  def __str__ (self):
+    return self.name
+    
+class Issue (models.Model):
+  num = models.IntegerField()
+  merge_branch = models.CharField(max_length=255)
+  
+  assignment = models.ForeignKey(Assignment)
+  student = models.ForeignKey(settings.AUTH_USER_MODEL)
+  
+  created = models.DateTimeField(auto_now_add=True)
+  modified = models.DateTimeField(auto_now=True)
+  
+  def __str__ (self):
+    return self.merge_branch
+    
