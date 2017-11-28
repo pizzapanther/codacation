@@ -1,23 +1,31 @@
 <md-dialog ref="add_dialog">
   <md-progress v-if="loading" class="md-accent main" md-indeterminate></md-progress>
-  <form>
+  <form @submit.stop.prevent="do_add" class="md-dialog">
     <md-dialog-title>Add Assignment</md-dialog-title>
   
     <md-dialog-content>
       <md-input-container>
         <label for="repo">Repository</label>
-        <md-select name="repo" id="repo" v-model="form.repo">
+        <md-select v-model="form.repoUrl" required>
           <md-option v-for="r in repos" :value="r.url" :key="r.id">
             {{ r.name }}
             <span v-if="r.isPrivate"> (private)</span>
           </md-option>
         </md-select>
       </md-input-container>
+      <md-input-container>
+        <label>Name</label>
+        <md-input v-model="form.name" required></md-input>
+      </md-input-container>
+      <md-input-container>
+        <label>Short description</label>
+        <md-input v-model="form.shortDescription" required></md-input>
+      </md-input-container>
     </md-dialog-content>
   
     <md-dialog-actions>
       <md-button class="" @click="closeDialog()">Cancel</md-button>
-      <md-button class="md-primary" @click="do_add()">Add</md-button>
+      <md-button class="md-primary" type="submit">Add</md-button>
     </md-dialog-actions>
   </form>
 </md-dialog>

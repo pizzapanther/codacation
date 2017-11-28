@@ -16,7 +16,7 @@
     <md-card-content>
       <md-tabs v-if="klass.isAdmin">
         <md-tab id="assignments" md-label="Assignments">
-          assign
+          <class-assignments :assignments="assignments"></class-assignments>
         </md-tab>
         <md-tab id="students" md-label="Students">
           <class-people :people="students"></class-people>

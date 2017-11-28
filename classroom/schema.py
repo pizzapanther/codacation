@@ -5,11 +5,17 @@ import graphene
 from graphene import relay
 from graphene_django import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
+from graphene_django.rest_framework.mutation import SerializerMutation
 
-from classroom.models import Klass
+from classroom.models import Klass, Assignment, Issue
+from classroom.serializers import AssignmentSerializer
 
 User = get_user_model()
 
+class AssignmentMutation(SerializerMutation):
+  class Meta:
+    serializer_class = AssignmentSerializer
+    
 class JoinClass (relay.ClientIDMutation):
   class Input:
     first_name = graphene.String(required=True)
@@ -37,6 +43,18 @@ class JoinClass (relay.ClientIDMutation):
       return cls(errors=['Not Found'])
       
     return cls(errors=['Not logged in'])
+    
+class AssignmentNode (DjangoObjectType):
+  class Meta:
+    model = Assignment
+    filter_fields = ['id', 'name', 'repo_url']
+    interfaces = (relay.Node, )
+    
+class IssueNode (DjangoObjectType):
+  class Meta:
+    model = Issue
+    filter_fields = ['id', 'merge_branch', 'num']
+    interfaces = (relay.Node, )
     
 class KlassNode (DjangoObjectType):
   is_admin = graphene.Boolean()
@@ -76,3 +94,4 @@ class Query:
     
 class Mutation:
   join_class = JoinClass.Field()
+  add_edit_assignment = AssignmentMutation.Field()

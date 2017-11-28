@@ -6,10 +6,10 @@ django-uwsgi==0.2.1
 djangorestframework==3.7.3
 djzen==17.7.1
 graphene==2.0.1
-graphene-django==2.0.0
 pip-save==0.2.0
 psycopg2==2.7.3.2
 PyJWT==1.5.3
 social-auth-app-django==2.0.0
 uwsgi==2.0.15
 whitenoise==3.3.1
+-e git+git://github.com/pizzapanther/graphene-django.git#egg=graphene-django

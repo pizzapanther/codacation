@@ -5,6 +5,7 @@ import store from '../services/store';
 import AuthRequired from '../mixins/auth-required';
 
 import ClassPeople from './class-people';
+import ClassAssignments from './class-assignments';
 import AddAssignmentDialog from './dialogs/add-assignment';
 
 var Klass = Vue.component('my-class', {
@@ -18,6 +19,7 @@ var Klass = Vue.component('my-class', {
       klass: null,
       students: [],
       admins: [],
+      assignments: [],
       dialog: null
     };
   },
@@ -37,6 +39,11 @@ var Klass = Vue.component('my-class', {
           edges: {
             node: 'id, email, name'
           }
+        },
+        assignmentSet: {
+          edges: {
+            node: 'id,name,shortDescription,repoUrl,created'
+          }
         }
       };
       
@@ -52,6 +59,7 @@ var Klass = Vue.component('my-class', {
           store.commit('set_title', this.klass.name);
           this.students = response.nodes(this.klass.students);
           this.admins = response.nodes(this.klass.admins);
+          this.assignments = response.nodes(this.klass.assignmentSet);
         })
         .catch(function (e) {
           console.error(e);

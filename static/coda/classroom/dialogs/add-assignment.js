@@ -1,4 +1,4 @@
-import {rest_api} from '../../services/graph_api';
+import {data_graph, rest_api} from '../../services/graph_api';
 import store from '../../services/store';
 
 function AddAssignmentDialog (parent) {
@@ -6,7 +6,7 @@ function AddAssignmentDialog (parent) {
     template: "#tpl-classroom-dialogs-add-assignment",
     data() {
       return {
-        form: {},
+        form: {klass: atob(parent.klass.id).split(':')[1]},
         repos: []
       };
     },
@@ -37,6 +37,23 @@ function AddAssignmentDialog (parent) {
       closeDialog() {
         this.$refs.add_dialog.close();
         parent.close_assignment();
+      },
+      do_add() {
+        var m = {
+          node: 'addEditAssignment',
+          input: this.form,
+          attributes: ['id']
+        };
+        
+        data_graph().mutate(m).submit()
+          .then((response) => {
+            this.$refs.add_dialog.close();
+            parent.close_assignment(true);
+          })
+          .catch((e) => {
+            console.error(e);
+            alert('Error adding assignment.');
+          });
       }
     }
   };

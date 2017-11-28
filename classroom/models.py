@@ -41,6 +41,9 @@ class Assignment (models.Model):
   def __str__ (self):
     return self.name
     
+  class Meta:
+    ordering = ('-created',)
+    
 class Issue (models.Model):
   num = models.IntegerField()
   merge_branch = models.CharField(max_length=255)
@@ -52,5 +55,5 @@ class Issue (models.Model):
   modified = models.DateTimeField(auto_now=True)
   
   def __str__ (self):
-    return self.merge_branch
+    return '#{} - {}'.format(self.num, self.merge_branch)
     
