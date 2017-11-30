@@ -16,6 +16,16 @@ class AssignmentMutation(SerializerMutation):
   class Meta:
     serializer_class = AssignmentSerializer
     
+  @classmethod
+  def perform_mutate(cls, serializer, info):
+    obj = serializer.save(owner=info.context.user)
+
+    kwargs = {}
+    for f, field in serializer.fields.items():
+        kwargs[f] = field.get_attribute(obj)
+
+    return cls(errors=None, **kwargs)
+    
 class JoinClass (relay.ClientIDMutation):
   class Input:
     first_name = graphene.String(required=True)

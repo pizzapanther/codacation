@@ -17,3 +17,8 @@ class User (AbstractUser):
       
     return self.email
     
+  @property
+  def token (self):
+    social_auth = self.social_auth.get()
+    return social_auth.access_token
+    

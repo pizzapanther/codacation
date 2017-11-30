@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
+from urllib.parse import urlparse
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
   'django.contrib.staticfiles',
   'djzen',
   'django_uwsgi',
+  'django_q',
   
   'social_django',
   'graphene_django',
@@ -138,6 +140,30 @@ SECURE_SSL_REDIRECT = True
 
 GRAPHENE = {
   'SCHEMA': 'codacation.schema.schema'
+}
+
+REDIS = urlparse(os.environ.get('REDIS_URL', 'redis://127.0.0.1:6379/0'))
+REDIS_DB = 0
+if REDIS.path:
+  REDIS_DB = int(REDIS.path[1:])
+  
+Q_CLUSTER = {
+  'name': 'codacation',
+  'workers': 4,
+  'recycle': 500,
+  'timeout': 60,
+  'compress': True,
+  'save_limit': 250,
+  'queue_limit': 500,
+  'cpu_affinity': 1,
+  'label': 'Django Q',
+  'redis': {
+    'host': REDIS.hostname,
+    'port': REDIS.port,
+    'db': REDIS_DB,
+    'password': REDIS.password,
+    
+  }
 }
 
 from codacation.settings.auth import *

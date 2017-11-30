@@ -34,6 +34,7 @@ class Assignment (models.Model):
   repo_url = models.CharField(max_length=255)
   
   klass = models.ForeignKey(Klass)
+  owner = models.ForeignKey(settings.AUTH_USER_MODEL)
   
   created = models.DateTimeField(auto_now_add=True)
   modified = models.DateTimeField(auto_now=True)
