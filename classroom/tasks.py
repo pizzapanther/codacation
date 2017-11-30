@@ -5,6 +5,8 @@ from urllib.parse import urlparse
 from django.contrib.auth import get_user_model
 from django.utils.text import slugify
 
+from django_q.tasks import async
+
 from gh.api import RestAPI
 from classroom.models import Assignment, Issue
 
@@ -21,8 +23,8 @@ def create_issues(aid):
   sha = response.json()['object']['sha']
   
   for student in ass.klass.students.all():
-    create_issue(
-      ass.owner.token, ass.id, sha, ass.repo_url, ass.name, ass.short_description, student.id)
+    async(
+      create_issue, ass.owner.token, ass.id, sha, ass.repo_url, ass.name, ass.short_description, student.id)
     
 def create_issue (token, aid, sha, repo_url, title, desc, uid):
   student = get_user_model().objects.get(id=uid)
