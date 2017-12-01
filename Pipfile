@@ -18,6 +18,8 @@ djzen = "*"
 "psycopg2" = "*"
 pyjwt = "*"
 redis = "*"
+uwsgi = "*"
+whitenoise = "*"
 
 
 [dev-packages]
