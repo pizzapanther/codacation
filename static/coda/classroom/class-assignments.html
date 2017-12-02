@@ -4,6 +4,9 @@
       <router-link :to="{name: 'assignment', params:{id: a.id}}">
         <strong>{{ a.name }}</strong>
       </router-link>
+      <div class="ts">
+        {{ created(a.created) }}
+      </div>
       <div>
         <md-button class="md-accent" :href="a.repoUrl" target="_blank">
           <md-icon class="md-accent">code</md-icon> Repository

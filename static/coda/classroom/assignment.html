@@ -17,11 +17,11 @@
           <strong>Created:</strong>
           {{ created_ts }}
         </li>
-        <li>
+        <li v-if="issue">
           <strong>Merge Branch:</strong>
           {{ issue.mergeBranch }}
         </li>
-        <li>
+        <li v-if="issue">
           <strong>Issue:</strong>
           <a :href="issue_url" target="_blank">#{{ issue.num }}</a>
         </li>

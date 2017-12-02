@@ -38,8 +38,19 @@ def create_issue (token, aid, sha, repo_url, title, desc, uid):
   slug = slugify(title)
   r = random.randint(100, 1000)
   merge_branch = f'{ghuser}-{slug}-{r}'
-  body = desc + "\n\n"
-  body += f"@{ghuser} Merge onto branch: **{merge_branch}**\n\n"
+  body = f"""# {title}
+
+## {desc}
+
+**Directions:**
+
+1. Fork this repository.
+2. Complete the assignment, see README.md for full directions.
+3. Create a pull request to **{merge_branch}**.
+
+Assigned To: @{ghuser}
+
+"""
   
   github = RestAPI(token=token)
   
