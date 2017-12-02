@@ -23,7 +23,6 @@ whitenoise = "==3.3.1"
 social-auth-app-django = "==2.0.0"
 graphene = "==2.0.1"
 graphene-django = {editable = true, git = "git://github.com/pizzapanther/graphene-django.git"}
-coda = "*"
 
 
 [dev-packages]
