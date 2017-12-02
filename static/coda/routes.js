@@ -9,6 +9,8 @@ import Classes from './classroom/classes';
 import Klass from './classroom/klass';
 import JoinClass from './classroom/join-class';
 
+import Assignment from './classroom/assignment';
+
 const NotFound = {template: '#tpl-404'};
 
 export const routes = [
@@ -16,6 +18,7 @@ export const routes = [
   {path: '/classes/join', name: 'join-class', component: JoinClass},
   {path: '/classes/:id', name: 'class', component: Klass, props: true},
   {path: '/classes', name: 'classes', component: Classes},
+  {path: '/assignments/:id', name: 'assignment', component: Assignment, props: true},
   {path: '/', name: 'home', component: Home},
   {path: '*', component: NotFound}
 ];

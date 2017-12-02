@@ -17,7 +17,7 @@ gulp.task('build-js', function () {
     plugins: [
       resolve({ jsnext: true }),
       commonjs(),
-      buble()
+      buble({transforms: { forOf: false }})
     ],
     external: ['axios', 'vue', 'vue-router', 'vue-material', 'vuex']
   }).then(function (bundle) {

@@ -1,7 +1,14 @@
-<div>
+<div class="assignments">
   <md-list>
     <md-list-item v-for="a in assignments" :key="a.id">
-      <h3>{{ a.name }}</h3>
+      <router-link :to="{name: 'assignment', params:{id: a.id}}">
+        <strong>{{ a.name }}</strong>
+      </router-link>
+      <div>
+        <md-button class="md-accent" :href="a.repoUrl" target="_blank">
+          <md-icon class="md-accent">code</md-icon> Repository
+        </md-button>
+      </div>
       <md-divider></md-divider>
     </md-list-item>
   </md-list>

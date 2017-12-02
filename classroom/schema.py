@@ -94,6 +94,7 @@ class KlassNode (DjangoObjectType):
     
 class Query:
   my_classes = DjangoFilterConnectionField(KlassNode)
+  my_assignments = DjangoFilterConnectionField(AssignmentNode)
   
   def resolve_my_classes (self, info, **input):
     if info.context.user.is_authenticated():
@@ -101,6 +102,13 @@ class Query:
       return Klass.objects.filter(Q(admins=user) | Q(students=user))
       
     return Klass.objects.none()
+    
+  def resolve_my_assignment (self, info, **input):
+    if info.context.user.is_authenticated():
+      user = info.context.user
+      return Assignment.objects.filter(Q(klass__admins=user) | Q(klass__students=user))
+      
+    return Assignment.objects.none()
     
 class Mutation:
   join_class = JoinClass.Field()

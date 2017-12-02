@@ -2,13 +2,14 @@
   <component :is="dialog"></component>
   <md-card class="content" v-if="klass">
     <md-card-header>
-      <div class="header-button">
+      <div class="header-button" v-if="klass.isAdmin">
         <md-button class="md-fab md-accent" @click="add_assignment()">
           <md-icon>add</md-icon>
         </md-button>
       </div>
       <h1>{{ klass.name }}</h1>
       <h3 v-if="klass.isAdmin">Invite Code: {{ klass.inviteCode }}</h3>
+      <h3 v-if="!klass.isAdmin">Assignments</h3>
       <p v-if="klass.isAdmin">
         Join at: <a :href="join_url" target="_blank">{{ join_url }}</a>
       </p>
@@ -26,7 +27,7 @@
         </md-tab>
       </md-tabs>
       <div v-if="!klass.isAdmin">
-        assignments
+        <class-assignments :assignments="assignments"></class-assignments>
       </div>
     </md-card-content>
   </md-card>

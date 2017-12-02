@@ -1,0 +1,31 @@
+<div class="assignment">
+  <md-card class="content" v-if="ass">
+    <md-card-header>
+      <h1>{{ ass.name }} - {{ ass.klass.name }}</h1>
+    </md-card-header>
+    <md-card-content>
+      <ul>
+        <li>
+          <strong>Description:</strong>
+          {{ ass.shortDescription }}
+        </li>
+        <li>
+          <strong>Respository</strong>
+          <a :href="ass.repoUrl" target="_blank">{{ ass.repoUrl }}</a>
+        </li>
+        <li>
+          <strong>Created:</strong>
+          {{ created_ts }}
+        </li>
+        <li>
+          <strong>Merge Branch:</strong>
+          {{ issue.mergeBranch }}
+        </li>
+        <li>
+          <strong>Issue:</strong>
+          <a :href="issue_url" target="_blank">#{{ issue.num }}</a>
+        </li>
+      </ul>
+    </md-card-content>
+  </md-card>
+</div>
