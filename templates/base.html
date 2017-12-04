@@ -47,14 +47,17 @@
     <script src="{% static "vue.js" %}"></script>
     <script src="{% static "vue-router.js" %}"></script>
     <script src="{% static "vuex.js" %}"></script>
+    <script src="{% static "vue-material.debug.js" %}"></script>
     {% else %}
     <script src="{% static "axios.min.js" %}"></script>
     <script src="{% static "vue.min.js" %}"></script>
     <script src="{% static "vue-router.min.js" %}"></script>
     <script src="{% static "vuex.min.js" %}"></script>
-    {% endif %}
-    
     <script src="{% static "vue-material.js" %}"></script>
+    
+    <script src="//cdn.ravenjs.com/3.20.1/vue/raven.min.js" crossorigin="anonymous"></script>
+    <script>Raven.config('https://50e4f9ed6a9845ccbe3f35f5257b55b8@sentry.io/254010').install();</script>
+    {% endif %}
     
     <script src="{% static "dist/main.js" %}"></script>
   </body>
