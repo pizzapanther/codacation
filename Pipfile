@@ -7,7 +7,7 @@ name = "pypi"
 
 [packages]
 
-django = "==1.11.7"
+django = "==1.11.8"
 dj-database-url = "==0.4.2"
 django-dotenv = "==1.4.1"
 django-filter = "==1.1.0"
