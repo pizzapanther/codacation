@@ -29,6 +29,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', None)
 
 ALLOWED_HOSTS = [
   'pallas.neutrondrive.com',
+  'localhost.neutrondrive.com',
+  
   'codacation.herokuapp.com',
   'codacation.com',
   'www.codacation.com',
