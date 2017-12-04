@@ -8,7 +8,7 @@ var buble = require('rollup-plugin-buble');
 var resolve = require('rollup-plugin-node-resolve');
 var commonjs = require('rollup-plugin-commonjs');
 
-var build_tasks = ['build-js', 'build-css'];
+var build_tasks = ['maps', 'build-js', 'build-css'];
 
 gulp.task('build-js', function () {
   // including vue externally so it builds faster
@@ -40,6 +40,12 @@ gulp.task('build-css', function () {
     .pipe(less({paths: ['static/less']}))
     .pipe(addsrc('node_modules/vue-material/dist/vue-material.css'))
     .pipe(concat('coda.css'))
+    .pipe(gulp.dest("static/dist"));
+});
+
+gulp.task('maps', function () {
+  return gulp.src("node_modules/vue-material/dist/*.map")
+    .pipe(plumber())
     .pipe(gulp.dest("static/dist"));
 });
 
