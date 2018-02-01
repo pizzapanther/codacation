@@ -1,0 +1,17 @@
+django==1.11.8
+dj-database-url==0.4.2
+django-dotenv==1.4.1
+django-filter==1.1.0
+django-q==0.8.1
+django-uwsgi==0.2.1
+djangorestframework==3.7.3
+djzen==17.12.1
+psycopg2==2.7.3.2
+pyjwt==1.5.3
+redis==2.10.6
+uwsgi==2.0.15
+whitenoise==3.3.1
+social-auth-app-django==2.0.0
+graphene==2.0.1
+-e git://github.com/pizzapanther/graphene-django.git#egg=graphene-django
+raven==6.3.0
